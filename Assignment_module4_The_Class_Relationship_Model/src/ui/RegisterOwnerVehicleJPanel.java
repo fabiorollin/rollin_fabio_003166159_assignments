@@ -9,13 +9,22 @@ package ui;
  * @author fabio
  */
 public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
+    
+    private javax.swing.JPanel bottomjPanel;
+    private model.ServiceCatalog serviceCatalog;
+    private model.VehicleDirectory vehicleDirectory;
+
 
     /**
      * Creates new form RegisterOwnerVehicleJPanel
      */
-    public RegisterOwnerVehicleJPanel() {
+    public RegisterOwnerVehicleJPanel(javax.swing.JPanel bottomjPanel, model.ServiceCatalog serviceCatalog, model.VehicleDirectory vehicleDirectory) {
         initComponents();
+        this.bottomjPanel = bottomjPanel;
+        this.serviceCatalog = serviceCatalog;
+        this.vehicleDirectory = vehicleDirectory;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
