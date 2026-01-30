@@ -10,6 +10,8 @@ public class ServiceRecord {
     private Vehicle vehicle;
     private Service service;
     private String serviceDate;
+    private boolean completed;
+
 
     public ServiceRecord() {
     }
@@ -45,6 +47,14 @@ public class ServiceRecord {
     public void setServiceDate(String serviceDate) {
         this.serviceDate = serviceDate;
     }
+    public boolean isCompleted() {
+    return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+    this.completed = completed;
+    }
+
 
     @Override
     public String toString() {

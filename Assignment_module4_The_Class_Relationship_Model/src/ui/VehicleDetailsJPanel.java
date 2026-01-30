@@ -376,20 +376,21 @@ public class VehicleDetailsJPanel extends javax.swing.JPanel {
         Service selectedService = (Service) selected;
 
         // ---- 4) Update EXISTING record (do NOT add new record) ----
-        record.getOwner().setOwnerId(ownerId);
-        record.getOwner().setFirstName(firstName);
-        record.getOwner().setLastName(lastName);
-        record.setServiceDate(serviceDate);
-
-        record.getVehicle().setVehicleId(vehicleId);
-        record.getVehicle().setMake(make);
-        record.getVehicle().setModel(model);
-        record.getVehicle().setYear(year);
-        record.getVehicle().setRegistrationNumber(regNum);
-
-        record.setService(selectedService);
-
-        JOptionPane.showMessageDialog(this, "Record updated successfully!");
+        // ---- 4) UPDATE record ----
+        vehicleDirectory.updateRecord(
+        record,
+        ownerId,
+        firstName,
+        lastName,
+        serviceDate,
+        vehicleId,
+        make,
+        model,
+        year,
+        regNum,
+        selectedService
+        );
+        JOptionPane.showMessageDialog(this, "Vehicle service updated successfully!");
 
         
 
@@ -397,8 +398,20 @@ public class VehicleDetailsJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        bottomjPanel.remove(this);
+
+        ManageVehiclesJPanel manage =
+        new ManageVehiclesJPanel(
+            bottomjPanel,
+            serviceCatalog,
+            vehicleDirectory
+        );
+
+         bottomjPanel.add(manage, "MANAGE");
+
         CardLayout cl = (CardLayout) bottomjPanel.getLayout();
-        cl.show(bottomjPanel, "HOME");
+        cl.show(bottomjPanel, "MANAGE");
+
     }//GEN-LAST:event_btnBackActionPerformed
 
 

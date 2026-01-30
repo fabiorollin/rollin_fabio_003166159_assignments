@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import model.ServiceCatalog;
 /**
@@ -201,6 +202,9 @@ public class ManageServicesJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        
+        CardLayout cl = (CardLayout) bottomjPanel.getLayout();
+        cl.show(bottomjPanel, "HOME");
     }//GEN-LAST:event_btnBackActionPerformed
 
 

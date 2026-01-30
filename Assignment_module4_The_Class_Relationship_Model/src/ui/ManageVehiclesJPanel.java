@@ -4,6 +4,15 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import model.ServiceCatalog;
+import model.ServiceRecord;
+
+
 /**
  *
  * @author fabio
@@ -11,16 +20,44 @@ package ui;
 public class ManageVehiclesJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bottomPanel;
     private model.VehicleDirectory vehicleDirectory;
+    private ArrayList<ServiceRecord> displayedRecords = new ArrayList<>();
+    private ServiceCatalog serviceCatalog;
+
+
 
 
     /**
      * Creates new form ManageVehiclesJPanel
      */
-    public ManageVehiclesJPanel(javax.swing.JPanel bottomPanel, model.VehicleDirectory vehicleDirectory) {
+    public ManageVehiclesJPanel(javax.swing.JPanel bottomPanel, ServiceCatalog serviceCatalog, model.VehicleDirectory vehicleDirectory) {
         initComponents();
         this.bottomPanel = bottomPanel;
         this.vehicleDirectory = vehicleDirectory;
-    }
+        this.serviceCatalog = serviceCatalog;
+
+        btnViewDetails.setEnabled(false);
+        btnDeleteAccount.setEnabled(false);
+
+        // single selection only
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // enable buttons only when a row is selected
+        jTable1.getSelectionModel().addListSelectionListener(e -> {
+        boolean rowSelected = jTable1.getSelectedRow() >= 0;
+        btnViewDetails.setEnabled(rowSelected);
+        btnDeleteAccount.setEnabled(rowSelected);
+        });
+
+        // wire buttons
+        btnBack.addActionListener(evt -> goBack());
+        btnSearch.addActionListener(evt -> search());
+        btnDeleteAccount.addActionListener(evt -> deleteSelected());
+        btnViewDetails.addActionListener(evt -> viewDetails());
+
+        // load initial table
+        refreshTable(vehicleDirectory.getRecordList());
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +85,11 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
         btnSearch.setText("Search");
 
         btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,6 +163,13 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        
+        CardLayout cl = (CardLayout) bottomPanel.getLayout();
+        cl.show(bottomPanel, "HOME");
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -132,4 +181,104 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+private void refreshTable(ArrayList<ServiceRecord> records) {
+    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+    dtm.setRowCount(0);
+
+    displayedRecords = records;
+
+    for (ServiceRecord r : records) {
+        Object[] row = new Object[4];
+        row[0] = r.getOwner().getOwnerId();
+        row[1] = r.getVehicle().getVehicleId();
+        row[2] = r.getService().getServiceType();
+        row[3] = r.getService().getCost();
+        dtm.addRow(row);
+    }
+
+    btnViewDetails.setEnabled(false);
+    btnDeleteAccount.setEnabled(false);
 }
+private void goBack() {
+    CardLayout cl = (CardLayout) bottomPanel.getLayout();
+    cl.show(bottomPanel, "HOME");
+}
+private void search() {
+    String query = txtSearch.getText().trim();
+
+    if (query.isEmpty()) {
+        // if empty, show all
+        refreshTable(vehicleDirectory.getRecordList());
+        return;
+    }
+
+    // Try search by Vehicle ID first (if numeric)
+    try {
+        int vehicleId = Integer.parseInt(query);
+        ServiceRecord record = vehicleDirectory.findByVehicleId(vehicleId);
+        if (record == null) {
+            JOptionPane.showMessageDialog(this, "No vehicle found with ID: " + vehicleId);
+            return;
+        }
+
+        ArrayList<ServiceRecord> single = new ArrayList<>();
+        single.add(record);
+        refreshTable(single);
+        return;
+
+    } catch (NumberFormatException ex) {
+        // Not an integer -> treat as model search
+    }
+
+    // Search by vehicle model (multiple matches)
+    ArrayList<ServiceRecord> matches = vehicleDirectory.findByVehicleModel(query);
+    if (matches.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No vehicles found with model name: " + query);
+        return;
+    }
+
+    refreshTable(matches);
+    }
+    private void deleteSelected() {
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+        return;
+    }
+
+    ServiceRecord record = displayedRecords.get(selectedRow);
+
+    int choice = JOptionPane.showConfirmDialog(this,
+            "Delete this record for Vehicle ID: " + record.getVehicle().getVehicleId() + "?",
+            "Confirm Delete",
+            JOptionPane.YES_NO_OPTION);
+
+    if (choice != JOptionPane.YES_OPTION) return;
+
+    vehicleDirectory.deleteRecord(record);
+    JOptionPane.showMessageDialog(this, "Record deleted.");
+
+    // refresh full table after delete
+    refreshTable(vehicleDirectory.getRecordList());
+    }
+    
+    private void viewDetails() {
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a row to view.");
+        return;
+    }
+
+    ServiceRecord record = displayedRecords.get(selectedRow);
+
+    VehicleDetailsJPanel details =
+            new VehicleDetailsJPanel(bottomPanel, vehicleDirectory, serviceCatalog, record);
+
+    bottomPanel.add(details, "DETAILS");
+
+    CardLayout cl = (CardLayout) bottomPanel.getLayout();
+    cl.show(bottomPanel, "DETAILS");
+}
+
+
+    }

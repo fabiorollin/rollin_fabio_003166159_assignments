@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.CardLayout;
+import model.Business;
 import model.ServiceCatalog;
 import model.VehicleDirectory;
 
@@ -14,8 +15,9 @@ import model.VehicleDirectory;
  * @author fabio
  */
 public class MainJFrame extends javax.swing.JFrame {
-    private ServiceCatalog serviceCatalog;
-    private VehicleDirectory vehicleDirectory;
+    
+    private Business business;
+
 
     private CardLayout cardLayout;
 
@@ -27,25 +29,28 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         
         // 1) Backend objects
-        serviceCatalog = new ServiceCatalog();
-        vehicleDirectory = new VehicleDirectory();
+        business = new Business();
+        
+        
 
         // 2) Create initial data (required by assignment)
          populateInitialData();
 
          
         // 3) Setup CardLayout in bottom panel
-        cardLayout = new CardLayout();
+         cardLayout = new CardLayout();
          bottomjPanel.setLayout(cardLayout);
 
          // Clear the label that NetBeans placed there
          bottomjPanel.removeAll();
+         bottomjPanel.revalidate();
+         bottomjPanel.repaint();
 
          // 4) Create your panels (cards)
          HomeJPanel home = new HomeJPanel();  // optional (if you want a separate Home screen)
-         ManageServicesJPanel servicesPanel = new ManageServicesJPanel(bottomjPanel, serviceCatalog);
-         RegisterOwnerVehicleJPanel registerPanel = new RegisterOwnerVehicleJPanel(bottomjPanel, serviceCatalog, vehicleDirectory);
-         ManageVehiclesJPanel manageVehiclesPanel = new ManageVehiclesJPanel(bottomjPanel, vehicleDirectory);
+         ManageServicesJPanel servicesPanel = new ManageServicesJPanel(bottomjPanel, business.getServiceCatalog());
+         RegisterOwnerVehicleJPanel registerPanel = new RegisterOwnerVehicleJPanel(bottomjPanel, business.getServiceCatalog(), business.getVehicleDirectory());
+         ManageVehiclesJPanel manageVehiclesPanel = new ManageVehiclesJPanel(bottomjPanel, business.getServiceCatalog(), business.getVehicleDirectory());
 
          // 5) Add cards
          bottomjPanel.add(home, "HOME");
@@ -170,6 +175,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnManageVehiclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageVehiclesActionPerformed
         // TODO add your handling code here:
+        ManageVehiclesJPanel manageVehiclesPanel =
+        new ManageVehiclesJPanel(bottomjPanel, business.getServiceCatalog(), business.getVehicleDirectory());
+
+        bottomjPanel.add(manageVehiclesPanel, "MANAGE");
         cardLayout.show(bottomjPanel, "MANAGE");
     }//GEN-LAST:event_btnManageVehiclesActionPerformed
 
@@ -221,30 +230,30 @@ public class MainJFrame extends javax.swing.JFrame {
     private void populateInitialData() {
 
     // --- Services ---
-    serviceCatalog.addService(101, "Oil Change", 79.99, "Mike Johnson", 45);
-    serviceCatalog.addService(102, "Car Wash", 25.00, "Sarah Lee", 20);
-    serviceCatalog.addService(103, "Tire Rotation", 60.00, "Chris Brown", 40);
+    business.getServiceCatalog().addService(101, "Oil Change", 79.99, "Mike Johnson", 45);
+    business.getServiceCatalog().addService(102, "Car Wash", 25.00, "Sarah Lee", 20);
+    business.getServiceCatalog().addService(103, "Tire Rotation", 60.00, "Chris Brown", 40);
 
     // --- 5 Records (with 2 vehicles having same "name/model" for search test case) ---
-    vehicleDirectory.addRecord(1, "John", "Smith", "2026-01-15",
+    business.getVehicleDirectory().addRecord(1, "John", "Smith", "2026-01-15",
             1001, "Honda", "Civic", 2019, "ABC123",
-            serviceCatalog.findById(101));
+            business.getServiceCatalog().findById(101));
 
-    vehicleDirectory.addRecord(2, "Ana", "Lopez", "2026-01-16",
+    business.getVehicleDirectory().addRecord(2, "Ana", "Lopez", "2026-01-16",
             1002, "Honda", "Civic", 2020, "XYZ789",   // same model "Civic" (search test)
-            serviceCatalog.findById(102));
+            business.getServiceCatalog().findById(102));
 
-    vehicleDirectory.addRecord(3, "David", "Miller", "2026-01-17",
+    business.getVehicleDirectory().addRecord(3, "David", "Miller", "2026-01-17",
             1003, "Toyota", "Camry", 2018, "CAM456",
-            serviceCatalog.findById(103));
+            business.getServiceCatalog().findById(103));
 
-    vehicleDirectory.addRecord(4, "Maria", "Santos", "2026-01-18",
+    business.getVehicleDirectory().addRecord(4, "Maria", "Santos", "2026-01-18",
             1004, "Ford", "Escape", 2021, "ESC321",
-            serviceCatalog.findById(101));
+            business.getServiceCatalog().findById(101));
 
-    vehicleDirectory.addRecord(5, "Pedro", "Costa", "2026-01-19",
+    business.getVehicleDirectory().addRecord(5, "Pedro", "Costa", "2026-01-19",
             1005, "Toyota", "Corolla", 2017, "COR654",
-            serviceCatalog.findById(102));
+            business.getServiceCatalog().findById(102));
 }
 
 

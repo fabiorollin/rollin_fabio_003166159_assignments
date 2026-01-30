@@ -73,6 +73,27 @@ public class VehicleDirectory {
     public void deleteRecord(ServiceRecord record) {
         recordList.remove(record);
     }
+    // UPDATE 
+        public void updateRecord(ServiceRecord record,
+        int ownerId, String firstName, String lastName, String serviceDate,
+        int vehicleId, String make, String model, int year, String registration,
+        Service service) {
+
+        record.getOwner().setOwnerId(ownerId);
+        record.getOwner().setFirstName(firstName);
+        record.getOwner().setLastName(lastName);
+
+        record.setServiceDate(serviceDate);
+
+        record.getVehicle().setVehicleId(vehicleId);
+        record.getVehicle().setMake(make);
+        record.getVehicle().setModel(model);
+        record.getVehicle().setYear(year);
+        record.getVehicle().setRegistrationNumber(registration);
+
+        record.setService(service);
+}
+
 
     @Override
     public String toString() {
