@@ -26,18 +26,77 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSplitPane1 = new javax.swing.JSplitPane();
+        topjPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        bottomjPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        topjPanel.setBackground(new java.awt.Color(204, 204, 255));
+
+        jButton1.setText("Services");
+
+        jButton2.setText("Vehicle & Owner");
+
+        jButton3.setText("Manage Vehicles");
+
+        javax.swing.GroupLayout topjPanelLayout = new javax.swing.GroupLayout(topjPanel);
+        topjPanel.setLayout(topjPanelLayout);
+        topjPanelLayout.setHorizontalGroup(
+            topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topjPanelLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jButton1)
+                .addGap(114, 114, 114)
+                .addComponent(jButton2)
+                .addGap(108, 108, 108)
+                .addComponent(jButton3)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        topjPanelLayout.setVerticalGroup(
+            topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topjPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
+
+        jSplitPane1.setTopComponent(topjPanel);
+
+        bottomjPanel.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Welcome to Vehicle Service Management Application");
+
+        javax.swing.GroupLayout bottomjPanelLayout = new javax.swing.GroupLayout(bottomjPanel);
+        bottomjPanel.setLayout(bottomjPanelLayout);
+        bottomjPanelLayout.setHorizontalGroup(
+            bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomjPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+        bottomjPanelLayout.setVerticalGroup(
+            bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bottomjPanelLayout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jLabel1)
+                .addContainerGap(202, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setRightComponent(bottomjPanel);
+
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +137,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel bottomjPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel topjPanel;
     // End of variables declaration//GEN-END:variables
 }
