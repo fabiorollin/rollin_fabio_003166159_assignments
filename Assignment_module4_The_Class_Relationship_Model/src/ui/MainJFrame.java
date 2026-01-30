@@ -148,7 +148,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(bottomjPanelLayout.createSequentialGroup()
                 .addGap(168, 168, 168)
                 .addComponent(lblTitle)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(500, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(bottomjPanel);

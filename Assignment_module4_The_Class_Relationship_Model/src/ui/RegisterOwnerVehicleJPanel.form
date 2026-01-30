@@ -29,39 +29,38 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblOwnerFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblOwnerLastNAme" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblServiceDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblOwnerID" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtOwnerID" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="txtServiceDate" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="txtOwnerLastName" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="txtOwnerFistName" min="-2" pref="180" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                              <Component id="btnRegisterService" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblOwnerFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblOwnerLastNAme" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblServiceDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblOwnerID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtOwnerID" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="txtServiceDate" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="txtOwnerLastName" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="txtOwnerFistName" min="-2" pref="180" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="243" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnRegisterService" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,11 +92,11 @@
                   <Component id="lblServiceDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtServiceDate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="btnRegisterService" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="56" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,28 +161,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtVehicleID" pref="129" max="32767" attributes="0"/>
-                      <Component id="txtMake" max="32767" attributes="0"/>
-                      <Component id="txtModel" max="32767" attributes="0"/>
-                      <Component id="txtRegistrationNumber" max="32767" attributes="0"/>
-                      <Component id="ComboBoxServiceOptedf" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblVehicleID" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMake" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMode" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblServiceOpted" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRegistrationName" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblYear" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtYear" pref="129" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtVehicleID" pref="129" max="32767" attributes="0"/>
+                          <Component id="txtMake" max="32767" attributes="0"/>
+                          <Component id="txtModel" max="32767" attributes="0"/>
+                          <Component id="txtRegistrationNumber" max="32767" attributes="0"/>
+                          <Component id="ComboBoxServiceOpted" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -191,39 +194,44 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblVehicleID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtVehicleID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMake" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMake" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMode" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtModel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblYear" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtYear" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRegistrationName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtRegistrationNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ComboBoxServiceOptedf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblServiceOpted" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComboBoxServiceOpted" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lblTitle2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -231,27 +239,27 @@
             <Property name="text" type="java.lang.String" value="Vehicle Details"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lblVehicleID">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vehicle ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="lblMake">
           <Properties>
             <Property name="text" type="java.lang.String" value="Make"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="lblMode">
           <Properties>
             <Property name="text" type="java.lang.String" value="Model"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="lblRegistrationName">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registration Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="lblServiceOpted">
           <Properties>
             <Property name="text" type="java.lang.String" value="Service Opted"/>
           </Properties>
@@ -264,7 +272,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtModel">
         </Component>
-        <Component class="javax.swing.JComboBox" name="ComboBoxServiceOptedf">
+        <Component class="javax.swing.JComboBox" name="ComboBoxServiceOpted">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -276,11 +284,18 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxServiceOptedfActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxServiceOptedActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblYear">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Year"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtYear">
         </Component>
       </SubComponents>
     </Container>
@@ -288,11 +303,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Register Service"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterServiceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

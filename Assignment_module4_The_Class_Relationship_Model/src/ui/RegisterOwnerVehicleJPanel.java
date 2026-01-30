@@ -4,6 +4,14 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import model.Service;
+import model.ServiceCatalog;
+import model.VehicleDirectory;
+
+
 /**
  *
  * @author fabio
@@ -23,6 +31,8 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         this.bottomjPanel = bottomjPanel;
         this.serviceCatalog = serviceCatalog;
         this.vehicleDirectory = vehicleDirectory;
+        
+        populateServiceComboBox(); 
     }
     
 
@@ -46,17 +56,19 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         txtOwnerLastName = new javax.swing.JTextField();
         txtServiceDate = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblTitle2 = new javax.swing.JLabel();
+        lblVehicleID = new javax.swing.JLabel();
+        lblMake = new javax.swing.JLabel();
+        lblMode = new javax.swing.JLabel();
+        lblRegistrationName = new javax.swing.JLabel();
+        lblServiceOpted = new javax.swing.JLabel();
         txtRegistrationNumber = new javax.swing.JTextField();
         txtVehicleID = new javax.swing.JTextField();
         txtMake = new javax.swing.JTextField();
         txtModel = new javax.swing.JTextField();
-        ComboBoxServiceOptedf = new javax.swing.JComboBox<>();
+        ComboBoxServiceOpted = new javax.swing.JComboBox<>();
+        lblYear = new javax.swing.JLabel();
+        txtYear = new javax.swing.JTextField();
         btnRegisterService = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
@@ -99,82 +111,101 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Vehicle Details");
+        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitle2.setText("Vehicle Details");
 
-        jLabel7.setText("Vehicle ID");
+        lblVehicleID.setText("Vehicle ID");
 
-        jLabel8.setText("Make");
+        lblMake.setText("Make");
 
-        jLabel9.setText("Model");
+        lblMode.setText("Model");
 
-        jLabel10.setText("Registration Number");
+        lblRegistrationName.setText("Registration Number");
 
-        jLabel11.setText("Service Opted");
+        lblServiceOpted.setText("Service Opted");
 
-        ComboBoxServiceOptedf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBoxServiceOptedf.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxServiceOpted.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxServiceOpted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxServiceOptedfActionPerformed(evt);
+                ComboBoxServiceOptedActionPerformed(evt);
             }
         });
+
+        lblYear.setText("Year");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(lblTitle2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10))
+                    .addComponent(lblVehicleID)
+                    .addComponent(lblMake)
+                    .addComponent(lblMode)
+                    .addComponent(lblServiceOpted)
+                    .addComponent(lblRegistrationName)
+                    .addComponent(lblYear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtVehicleID, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                    .addComponent(txtMake)
-                    .addComponent(txtModel)
-                    .addComponent(txtRegistrationNumber)
-                    .addComponent(ComboBoxServiceOptedf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtYear, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtVehicleID, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                        .addComponent(txtMake)
+                        .addComponent(txtModel)
+                        .addComponent(txtRegistrationNumber)
+                        .addComponent(ComboBoxServiceOpted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(lblTitle2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblVehicleID)
                     .addComponent(txtVehicleID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(lblMake)
                     .addComponent(txtMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(lblMode)
                     .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblYear, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtYear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(lblRegistrationName)
                     .addComponent(txtRegistrationNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(ComboBoxServiceOptedf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblServiceOpted)
+                    .addComponent(ComboBoxServiceOpted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         btnRegisterService.setText("Register Service");
+        btnRegisterService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterServiceActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -185,29 +216,29 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblOwnerFirstName)
-                                        .addComponent(lblOwnerLastNAme)
-                                        .addComponent(lblServiceDate)
-                                        .addComponent(lblOwnerID))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtOwnerID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtOwnerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtOwnerFistName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(btnRegisterService))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(270, 270, 270)
-                        .addComponent(lblTitle)))
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblOwnerFirstName)
+                                    .addComponent(lblOwnerLastNAme)
+                                    .addComponent(lblServiceDate)
+                                    .addComponent(lblOwnerID))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtOwnerID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOwnerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOwnerFistName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(243, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegisterService)
+                .addGap(362, 362, 362))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,11 +263,11 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblServiceDate)
                     .addComponent(txtServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(btnRegisterService)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,28 +287,124 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtServiceDateActionPerformed
 
-    private void ComboBoxServiceOptedfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxServiceOptedfActionPerformed
+    private void ComboBoxServiceOptedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxServiceOptedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxServiceOptedfActionPerformed
+    }//GEN-LAST:event_ComboBoxServiceOptedActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) bottomjPanel.getLayout();
+        cl.show(bottomjPanel, "HOME");
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnRegisterServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterServiceActionPerformed
+        // TODO add your handling code here:
+        // ---- 1) Validate services exist ----
+        if (ComboBoxServiceOpted.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Please add a service first (Services screen).");
+        return;
+    }
+
+        // ---- 2) Read & validate text fields ----
+        String ownerIdStr = txtOwnerID.getText().trim();
+        String firstName = txtOwnerFistName.getText().trim();
+        String lastName = txtOwnerLastName.getText().trim();
+        String serviceDate = txtServiceDate.getText().trim();
+
+        String vehicleIdStr = txtVehicleID.getText().trim();
+        String make = txtMake.getText().trim();
+        String model = txtModel.getText().trim();
+        String regNum = txtRegistrationNumber.getText().trim();
+
+        // Required fields (NO NULLS)
+        if (ownerIdStr.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || serviceDate.isEmpty()
+            || vehicleIdStr.isEmpty() || make.isEmpty() || model.isEmpty() || regNum.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All fields are required. No empty values allowed.");
+        return;
+        }
+
+        // Owner ID must be int
+        int ownerId;
+        try {
+        ownerId = Integer.parseInt(ownerIdStr);
+        if (ownerId <= 0) {
+            JOptionPane.showMessageDialog(this, "Owner ID must be a positive number.");
+            return;
+        }
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Owner ID must be an integer.");
+        return;
+        }
+
+        // Vehicle ID must be int
+        int vehicleId;
+        int year;
+
+        try {
+        vehicleId = Integer.parseInt(vehicleIdStr);
+        year = Integer.parseInt(txtYear.getText().trim());
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Vehicle ID and Year must be integers.");
+        return;
+        }
+        
+        if (vehicleId <= 0) {
+        JOptionPane.showMessageDialog(this, "Vehicle ID must be a positive number.");
+        return;
+        }
+        
+        if (year < 1980 || year > 2100) {
+        JOptionPane.showMessageDialog(this, "Year must be a valid year (example: 2018).");
+        return;
+        }
+
+        // Optional: basic date check (simple format hint)
+        // Example expected: 2026-01-30
+        if (!serviceDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
+        JOptionPane.showMessageDialog(this, "Service Date must be in format YYYY-MM-DD (example: 2026-01-30).");
+        return;
+        }
+
+        // ---- 3) Get selected service ----
+        Object selected = ComboBoxServiceOpted.getSelectedItem();
+        if (!(selected instanceof Service)) {
+         JOptionPane.showMessageDialog(this, "Invalid service selected. Please add services first.");
+        return;
+        }
+        Service selectedService = (Service) selected;
+
+        // ---- 4) Create record ----
+        vehicleDirectory.addRecord(ownerId, firstName, lastName, serviceDate,
+            vehicleId, make, model, year, regNum, selectedService);
+        
+
+        JOptionPane.showMessageDialog(this, "Vehicle service registered successfully!");
+
+        clearFields();
+        
+        
+
+    }//GEN-LAST:event_btnRegisterServiceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxServiceOptedf;
+    private javax.swing.JComboBox<String> ComboBoxServiceOpted;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterService;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lblMake;
+    private javax.swing.JLabel lblMode;
     private javax.swing.JLabel lblOwnerFirstName;
     private javax.swing.JLabel lblOwnerID;
     private javax.swing.JLabel lblOwnerLastNAme;
+    private javax.swing.JLabel lblRegistrationName;
     private javax.swing.JLabel lblServiceDate;
+    private javax.swing.JLabel lblServiceOpted;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTitle2;
+    private javax.swing.JLabel lblVehicleID;
+    private javax.swing.JLabel lblYear;
     private javax.swing.JTextField txtMake;
     private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtOwnerFistName;
@@ -286,5 +413,44 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtRegistrationNumber;
     private javax.swing.JTextField txtServiceDate;
     private javax.swing.JTextField txtVehicleID;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
+
+    private void populateServiceComboBox() {
+
+    DefaultComboBoxModel model = new DefaultComboBoxModel(); // raw type (NetBeans-safe)
+
+    for (Service s : serviceCatalog.getServiceList()) {
+        model.addElement(s); // add Service objects
+    }
+
+    ComboBoxServiceOpted.setModel(model);
+
+    if (model.getSize() == 0) {
+        JOptionPane.showMessageDialog(this,
+                "No services available. Please add services first.",
+                "Warning",
+                JOptionPane.WARNING_MESSAGE);
+    }
+}
+
+    private void clearFields() {
+        txtOwnerID.setText("");
+        txtOwnerFistName.setText("");
+        txtOwnerLastName.setText("");
+        txtServiceDate.setText("");
+
+        txtVehicleID.setText("");
+        txtMake.setText("");
+        txtModel.setText("");
+        txtRegistrationNumber.setText("");
+        txtYear.setText("");
+
+        if (ComboBoxServiceOpted.getItemCount() > 0) {
+        ComboBoxServiceOpted.setSelectedIndex(0);
+        }
+    }
+    public void refreshServices() {
+       populateServiceComboBox();
+    }
 }

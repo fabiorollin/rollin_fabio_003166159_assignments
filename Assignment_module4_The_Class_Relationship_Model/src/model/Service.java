@@ -64,5 +64,4 @@ public class Service {
         return serviceType + " ($" + cost + ")";
     }
 }
-    
-}
+   
