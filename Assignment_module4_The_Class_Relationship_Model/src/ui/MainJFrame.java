@@ -33,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
         // 2) Create initial data (required by assignment)
          populateInitialData();
 
+         
         // 3) Setup CardLayout in bottom panel
         cardLayout = new CardLayout();
          bottomjPanel.setLayout(cardLayout);
@@ -41,7 +42,7 @@ public class MainJFrame extends javax.swing.JFrame {
          bottomjPanel.removeAll();
 
          // 4) Create your panels (cards)
-          HomeJPanel home = new HomeJPanel();  // optional (if you want a separate Home screen)
+         HomeJPanel home = new HomeJPanel();  // optional (if you want a separate Home screen)
          ManageServicesJPanel servicesPanel = new ManageServicesJPanel(bottomjPanel, serviceCatalog);
          RegisterOwnerVehicleJPanel registerPanel = new RegisterOwnerVehicleJPanel(bottomjPanel, serviceCatalog, vehicleDirectory);
          ManageVehiclesJPanel manageVehiclesPanel = new ManageVehiclesJPanel(bottomjPanel, vehicleDirectory);
@@ -54,7 +55,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
          // 6) Show home by default
          cardLayout.show(bottomjPanel, "HOME");
-}
+
     }
 
     /**
