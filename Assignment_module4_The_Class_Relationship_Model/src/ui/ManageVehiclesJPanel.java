@@ -40,6 +40,8 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setText("Manage Vehicles");
 

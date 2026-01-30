@@ -110,9 +110,9 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(topjPanelLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(btnServices)
-                .addGap(102, 102, 102)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                 .addComponent(btnVehicleOwner)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addGap(214, 214, 214)
                 .addComponent(btnManageVehicles)
                 .addGap(41, 41, 41))
         );
@@ -124,31 +124,31 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(btnServices)
                     .addComponent(btnVehicleOwner)
                     .addComponent(btnManageVehicles))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jSplitPane1.setTopComponent(topjPanel);
 
         bottomjPanel.setBackground(new java.awt.Color(102, 153, 255));
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setText("Welcome to Vehicle Service Management Application");
 
         javax.swing.GroupLayout bottomjPanelLayout = new javax.swing.GroupLayout(bottomjPanel);
         bottomjPanel.setLayout(bottomjPanelLayout);
         bottomjPanelLayout.setHorizontalGroup(
             bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bottomjPanelLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bottomjPanelLayout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         bottomjPanelLayout.setVerticalGroup(
             bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomjPanelLayout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(168, 168, 168)
                 .addComponent(lblTitle)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(bottomjPanel);
