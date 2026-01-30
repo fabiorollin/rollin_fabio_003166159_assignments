@@ -4,17 +4,57 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+import model.ServiceCatalog;
+import model.VehicleDirectory;
+
+
 /**
  *
  * @author fabio
  */
 public class MainJFrame extends javax.swing.JFrame {
+    private ServiceCatalog serviceCatalog;
+    private VehicleDirectory vehicleDirectory;
+
+    private CardLayout cardLayout;
+
 
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        
+        // 1) Backend objects
+        serviceCatalog = new ServiceCatalog();
+        vehicleDirectory = new VehicleDirectory();
+
+        // 2) Create initial data (required by assignment)
+         populateInitialData();
+
+        // 3) Setup CardLayout in bottom panel
+        cardLayout = new CardLayout();
+         bottomjPanel.setLayout(cardLayout);
+
+         // Clear the label that NetBeans placed there
+         bottomjPanel.removeAll();
+
+         // 4) Create your panels (cards)
+          HomeJPanel home = new HomeJPanel();  // optional (if you want a separate Home screen)
+         ManageServicesJPanel servicesPanel = new ManageServicesJPanel(bottomjPanel, serviceCatalog);
+         RegisterOwnerVehicleJPanel registerPanel = new RegisterOwnerVehicleJPanel(bottomjPanel, serviceCatalog, vehicleDirectory);
+         ManageVehiclesJPanel manageVehiclesPanel = new ManageVehiclesJPanel(bottomjPanel, vehicleDirectory);
+
+         // 5) Add cards
+         bottomjPanel.add(home, "HOME");
+         bottomjPanel.add(servicesPanel, "SERVICES");
+         bottomjPanel.add(registerPanel, "REGISTER");
+         bottomjPanel.add(manageVehiclesPanel, "MANAGE");
+
+         // 6) Show home by default
+         cardLayout.show(bottomjPanel, "HOME");
+}
     }
 
     /**
@@ -28,54 +68,70 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         topjPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnServices = new javax.swing.JButton();
+        btnVehicleOwner = new javax.swing.JButton();
+        btnManageVehicles = new javax.swing.JButton();
         bottomjPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         topjPanel.setBackground(new java.awt.Color(204, 204, 255));
+        topjPanel.setPreferredSize(new java.awt.Dimension(639, 50));
 
-        jButton1.setText("Services");
+        btnServices.setText("Services");
+        btnServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServicesActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Vehicle & Owner");
+        btnVehicleOwner.setText("Vehicle & Owner");
+        btnVehicleOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehicleOwnerActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Manage Vehicles");
+        btnManageVehicles.setText("Manage Vehicles");
+        btnManageVehicles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageVehiclesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topjPanelLayout = new javax.swing.GroupLayout(topjPanel);
         topjPanel.setLayout(topjPanelLayout);
         topjPanelLayout.setHorizontalGroup(
             topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topjPanelLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jButton1)
-                .addGap(114, 114, 114)
-                .addComponent(jButton2)
-                .addGap(108, 108, 108)
-                .addComponent(jButton3)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(btnServices)
+                .addGap(102, 102, 102)
+                .addComponent(btnVehicleOwner)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(btnManageVehicles)
+                .addGap(41, 41, 41))
         );
         topjPanelLayout.setVerticalGroup(
             topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topjPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(19, 19, 19)
                 .addGroup(topjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(btnServices)
+                    .addComponent(btnVehicleOwner)
+                    .addComponent(btnManageVehicles))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jSplitPane1.setTopComponent(topjPanel);
 
         bottomjPanel.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Welcome to Vehicle Service Management Application");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitle.setText("Welcome to Vehicle Service Management Application");
 
         javax.swing.GroupLayout bottomjPanelLayout = new javax.swing.GroupLayout(bottomjPanel);
         bottomjPanel.setLayout(bottomjPanelLayout);
@@ -83,15 +139,15 @@ public class MainJFrame extends javax.swing.JFrame {
             bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomjPanelLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(84, Short.MAX_VALUE))
         );
         bottomjPanelLayout.setVerticalGroup(
             bottomjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bottomjPanelLayout.createSequentialGroup()
                 .addGap(148, 148, 148)
-                .addComponent(jLabel1)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addComponent(lblTitle)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(bottomjPanel);
@@ -100,6 +156,21 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicesActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(bottomjPanel, "SERVICES");
+    }//GEN-LAST:event_btnServicesActionPerformed
+
+    private void btnVehicleOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehicleOwnerActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(bottomjPanel, "REGISTER");
+    }//GEN-LAST:event_btnVehicleOwnerActionPerformed
+
+    private void btnManageVehiclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageVehiclesActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(bottomjPanel, "MANAGE");
+    }//GEN-LAST:event_btnManageVehiclesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,11 +209,42 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bottomjPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnManageVehicles;
+    private javax.swing.JButton btnServices;
+    private javax.swing.JButton btnVehicleOwner;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel topjPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void populateInitialData() {
+
+    // --- Services ---
+    serviceCatalog.addService(101, "Oil Change", 79.99, "Mike Johnson", 45);
+    serviceCatalog.addService(102, "Car Wash", 25.00, "Sarah Lee", 20);
+    serviceCatalog.addService(103, "Tire Rotation", 60.00, "Chris Brown", 40);
+
+    // --- 5 Records (with 2 vehicles having same "name/model" for search test case) ---
+    vehicleDirectory.addRecord(1, "John", "Smith", "2026-01-15",
+            1001, "Honda", "Civic", 2019, "ABC123",
+            serviceCatalog.findById(101));
+
+    vehicleDirectory.addRecord(2, "Ana", "Lopez", "2026-01-16",
+            1002, "Honda", "Civic", 2020, "XYZ789",   // same model "Civic" (search test)
+            serviceCatalog.findById(102));
+
+    vehicleDirectory.addRecord(3, "David", "Miller", "2026-01-17",
+            1003, "Toyota", "Camry", 2018, "CAM456",
+            serviceCatalog.findById(103));
+
+    vehicleDirectory.addRecord(4, "Maria", "Santos", "2026-01-18",
+            1004, "Ford", "Escape", 2021, "ESC321",
+            serviceCatalog.findById(101));
+
+    vehicleDirectory.addRecord(5, "Pedro", "Costa", "2026-01-19",
+            1005, "Toyota", "Corolla", 2017, "COR654",
+            serviceCatalog.findById(102));
+}
+
+
 }
