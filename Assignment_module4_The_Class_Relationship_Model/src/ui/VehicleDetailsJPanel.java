@@ -325,7 +325,7 @@ public class VehicleDetailsJPanel extends javax.swing.JPanel {
             return;
         }
 
-        // Owner ID must be int
+        // Owner ID 
         int ownerId;
         try {
             ownerId = Integer.parseInt(ownerIdStr);
@@ -375,7 +375,7 @@ public class VehicleDetailsJPanel extends javax.swing.JPanel {
         }
         Service selectedService = (Service) selected;
 
-        // ---- 4) Update EXISTING record (do NOT add new record) ----
+        // ---- 4) Update EXISTING record  ----
         // ---- 4) UPDATE record ----
         vehicleDirectory.updateRecord(
         record,

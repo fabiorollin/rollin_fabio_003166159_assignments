@@ -45,7 +45,7 @@ public class ManageServicesJPanel extends javax.swing.JPanel {
         if (selected) loadSelectedServiceToFields();
         });
 
-        // wire buttons (do it here so NetBeans won’t overwrite)
+        // wire buttons 
         btnCreateService.addActionListener(evt -> createService());
         btnViewDetails.addActionListener(evt -> updateSelectedService());
 }

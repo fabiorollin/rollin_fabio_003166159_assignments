@@ -58,7 +58,7 @@ public class Service {
         this.serviceDuration = serviceDuration;
     }
 
-    // This is IMPORTANT so JComboBox displays nicely
+    // JComboBox
     @Override
     public String toString() {
         return serviceType + " ($" + cost + ")";

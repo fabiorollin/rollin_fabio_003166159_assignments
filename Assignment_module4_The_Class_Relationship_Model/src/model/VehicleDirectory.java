@@ -15,7 +15,7 @@ public class VehicleDirectory {
         recordList = new ArrayList<>();
     }
 
-    // CREATE (used by Register panel and startup data)
+    // CREATE 
     public ServiceRecord addRecord(
             int ownerId, String firstName, String lastName, long phoneNumber, String serviceDate,
             int vehicleId, String make, String model, int year, String registration,

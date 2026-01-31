@@ -36,7 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
         
         
 
-        // 2) Create initial data (required by assignment)
+        // 2) Create initial data
          populateInitialData();
 
          
@@ -49,7 +49,7 @@ public class MainJFrame extends javax.swing.JFrame {
          bottomjPanel.revalidate();
          bottomjPanel.repaint();
 
-         // 4) Create your panels (cards)
+         // 4) Create panels 
          HomeJPanel home = new HomeJPanel();  // optional (if you want a separate Home screen)
          ManageServicesJPanel servicesPanel = new ManageServicesJPanel(bottomjPanel, business.getServiceCatalog());
          RegisterOwnerVehicleJPanel registerPanel = new RegisterOwnerVehicleJPanel(bottomjPanel, business.getServiceCatalog(), business.getVehicleDirectory());
