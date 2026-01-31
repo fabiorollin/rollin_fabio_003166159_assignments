@@ -17,6 +17,7 @@ import model.VehicleDirectory;
 public class MainJFrame extends javax.swing.JFrame {
     
     private Business business;
+    private ManageServicesJPanel servicesPanel;
 
 
     private CardLayout cardLayout;
@@ -30,6 +31,8 @@ public class MainJFrame extends javax.swing.JFrame {
         
         // 1) Backend objects
         business = new Business();
+        servicesPanel = new ManageServicesJPanel(bottomjPanel, business.getServiceCatalog());
+        bottomjPanel.add(servicesPanel, "SERVICES");
         
         
 
@@ -165,7 +168,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicesActionPerformed
         // TODO add your handling code here:
+        servicesPanel.refreshServiceTable();
         cardLayout.show(bottomjPanel, "SERVICES");
+
+        
     }//GEN-LAST:event_btnServicesActionPerformed
 
     private void btnVehicleOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehicleOwnerActionPerformed

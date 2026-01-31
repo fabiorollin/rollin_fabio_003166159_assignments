@@ -83,6 +83,11 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
         lblTitle.setText("Manage Vehicles");
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -93,17 +98,17 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Owner ID", "Vechicle ID", "Service Opted", "Cost"
+                "Owner ID", "Vechicle ID", "Service Opted", "Cost", "OwnerFirst", "OwnerLast", "Model", "Make", "Year"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -170,6 +175,10 @@ public class ManageVehiclesJPanel extends javax.swing.JPanel {
         cl.show(bottomPanel, "HOME");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -188,16 +197,23 @@ private void refreshTable(ArrayList<ServiceRecord> records) {
     displayedRecords = records;
 
     for (ServiceRecord r : records) {
-        Object[] row = new Object[4];
+        Object[] row = new Object[9];
         row[0] = r.getOwner().getOwnerId();
         row[1] = r.getVehicle().getVehicleId();
         row[2] = r.getService().getServiceType();
         row[3] = r.getService().getCost();
+        row[4] = r.getOwner().getFirstName();
+        row[5] = r.getOwner().getLastName();
+        row[6] = r.getVehicle().getModel();
+        row[7] = r.getVehicle().getMake();
+        row[8] = r.getVehicle().getYear();
+        
         dtm.addRow(row);
     }
 
     btnViewDetails.setEnabled(false);
     btnDeleteAccount.setEnabled(false);
+    jTable1.clearSelection();
 }
 private void goBack() {
     CardLayout cl = (CardLayout) bottomPanel.getLayout();
@@ -207,17 +223,17 @@ private void search() {
     String query = txtSearch.getText().trim();
 
     if (query.isEmpty()) {
-        // if empty, show all
         refreshTable(vehicleDirectory.getRecordList());
         return;
     }
 
-    // Try search by Vehicle ID first (if numeric)
+    // 1) If numeric -> search by Vehicle ID
     try {
         int vehicleId = Integer.parseInt(query);
         ServiceRecord record = vehicleDirectory.findByVehicleId(vehicleId);
+
         if (record == null) {
-            JOptionPane.showMessageDialog(this, "No vehicle found with ID: " + vehicleId);
+            // requirement says: if no match found, no action required
             return;
         }
 
@@ -227,18 +243,36 @@ private void search() {
         return;
 
     } catch (NumberFormatException ex) {
-        // Not an integer -> treat as model search
+        // not a number -> continue searching by text fields
     }
 
-    // Search by vehicle model (multiple matches)
-    ArrayList<ServiceRecord> matches = vehicleDirectory.findByVehicleModel(query);
-    if (matches.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No vehicles found with model name: " + query);
-        return;
+    // 2) Text search: model OR make OR owner first OR owner last (contains, case-insensitive)
+    String q = query.toLowerCase();
+    ArrayList<ServiceRecord> matches = new ArrayList<>();
+
+    for (ServiceRecord r : vehicleDirectory.getRecordList()) {
+
+    String model = r.getVehicle().getModel() == null ? "" : r.getVehicle().getModel().toLowerCase();
+    String make  = r.getVehicle().getMake()  == null ? "" : r.getVehicle().getMake().toLowerCase();
+    String first = r.getOwner().getFirstName() == null ? "" : r.getOwner().getFirstName().toLowerCase();
+    String last  = r.getOwner().getLastName()  == null ? "" : r.getOwner().getLastName().toLowerCase();
+
+    String serviceType = (r.getService() == null || r.getService().getServiceType() == null)
+            ? ""
+            : r.getService().getServiceType().toLowerCase();
+
+    if (model.contains(q) || make.contains(q) || first.contains(q) || last.contains(q) || serviceType.contains(q)) {
+        matches.add(r);
     }
+}
+
+if (matches.isEmpty()) {
+    return; // no action required
+}
+
 
     refreshTable(matches);
-    }
+}
     private void deleteSelected() {
     int selectedRow = jTable1.getSelectedRow();
     if (selectedRow < 0) {
@@ -279,6 +313,7 @@ private void search() {
     CardLayout cl = (CardLayout) bottomPanel.getLayout();
     cl.show(bottomPanel, "DETAILS");
 }
+    
 
 
     }
