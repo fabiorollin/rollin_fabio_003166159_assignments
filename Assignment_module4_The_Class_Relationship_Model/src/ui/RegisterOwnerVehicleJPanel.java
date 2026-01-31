@@ -52,7 +52,7 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         lblOwnerLastNAme = new javax.swing.JLabel();
         lblServiceDate = new javax.swing.JLabel();
         txtOwnerFistName = new javax.swing.JTextField();
-        txtOwnerID = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
         txtOwnerLastName = new javax.swing.JTextField();
         txtServiceDate = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -71,6 +71,8 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         txtYear = new javax.swing.JTextField();
         btnRegisterService = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtOwnerID1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -91,9 +93,9 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtOwnerID.addActionListener(new java.awt.event.ActionListener() {
+        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOwnerIDActionPerformed(evt);
+                txtPhoneNumberActionPerformed(evt);
             }
         });
 
@@ -207,6 +209,14 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Phone Number");
+
+        txtOwnerID1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOwnerID1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,13 +237,15 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
                                     .addComponent(lblOwnerFirstName)
                                     .addComponent(lblOwnerLastNAme)
                                     .addComponent(lblServiceDate)
-                                    .addComponent(lblOwnerID))
+                                    .addComponent(lblOwnerID)
+                                    .addComponent(jLabel1))
                                 .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtOwnerID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtOwnerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtOwnerFistName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtOwnerFistName, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtOwnerID1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(243, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -247,10 +259,14 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOwnerID)
-                    .addComponent(txtOwnerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtOwnerID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOwnerFirstName)
@@ -275,9 +291,9 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOwnerFistNameActionPerformed
 
-    private void txtOwnerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOwnerIDActionPerformed
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOwnerIDActionPerformed
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
 
     private void txtOwnerLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOwnerLastNameActionPerformed
         // TODO add your handling code here:
@@ -306,10 +322,11 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
     }
 
         // ---- 2) Read & validate text fields ----
-        String ownerIdStr = txtOwnerID.getText().trim();
+        String ownerIdStr = txtOwnerID1.getText().trim();
         String firstName = txtOwnerFistName.getText().trim();
         String lastName = txtOwnerLastName.getText().trim();
         String serviceDate = txtServiceDate.getText().trim();
+        String phoneStr = txtPhoneNumber.getText().trim();
 
         String vehicleIdStr = txtVehicleID.getText().trim();
         String make = txtMake.getText().trim();
@@ -322,6 +339,11 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "All fields are required. No empty values allowed.");
         return;
         }
+        if (ownerIdStr.isEmpty() || phoneStr.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || serviceDate.isEmpty()
+        || vehicleIdStr.isEmpty() || make.isEmpty() || model.isEmpty() || regNum.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All fields are required. No empty values allowed.");
+         return;
+}
 
         // Owner ID must be int
         int ownerId;
@@ -335,6 +357,20 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Owner ID must be an integer.");
         return;
         }
+        long phoneNumber;
+
+        try {
+        phoneNumber = Long.parseLong(phoneStr);
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Phone number must contain only digits.");
+        return;
+        }
+        
+        if (phoneStr.length() < 10 || phoneNumber <= 0) {
+        JOptionPane.showMessageDialog(this, "Enter a valid phone number (at least 10 digits).");
+        return;
+        }
+        
 
         // Vehicle ID must be int
         int vehicleId;
@@ -374,7 +410,7 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
         Service selectedService = (Service) selected;
 
         // ---- 4) Create record ----
-        vehicleDirectory.addRecord(ownerId, firstName, lastName, serviceDate,
+        vehicleDirectory.addRecord(ownerId, firstName, lastName, phoneNumber, serviceDate,
             vehicleId, make, model, year, regNum, selectedService);
         
 
@@ -386,11 +422,16 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnRegisterServiceActionPerformed
 
+    private void txtOwnerID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOwnerID1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOwnerID1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxServiceOpted;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterService;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblMake;
@@ -408,8 +449,9 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtMake;
     private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtOwnerFistName;
-    private javax.swing.JTextField txtOwnerID;
+    private javax.swing.JTextField txtOwnerID1;
     private javax.swing.JTextField txtOwnerLastName;
+    private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtRegistrationNumber;
     private javax.swing.JTextField txtServiceDate;
     private javax.swing.JTextField txtVehicleID;
@@ -435,7 +477,7 @@ public class RegisterOwnerVehicleJPanel extends javax.swing.JPanel {
 }
 
     private void clearFields() {
-        txtOwnerID.setText("");
+        txtPhoneNumber.setText("");
         txtOwnerFistName.setText("");
         txtOwnerLastName.setText("");
         txtServiceDate.setText("");

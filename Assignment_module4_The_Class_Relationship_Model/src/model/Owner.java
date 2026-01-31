@@ -9,6 +9,7 @@ public class Owner {
     private int ownerId;
     private String firstName;
     private String lastName;
+    private long phoneNumber;
 
     public Owner() {
     }
@@ -35,6 +36,13 @@ public class Owner {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    public long getPhoneNumber() {
+    return phoneNumber;
+}
+
+    public void setPhoneNumber(long phoneNumber) {
+    this.phoneNumber = phoneNumber;
     }
 
     @Override

@@ -42,14 +42,16 @@
                                   <Component id="lblOwnerFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblOwnerLastNAme" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblServiceDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblOwnerID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblOwnerID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtOwnerID" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="txtPhoneNumber" min="-2" pref="180" max="-2" attributes="0"/>
                                   <Component id="txtServiceDate" min="-2" pref="180" max="-2" attributes="0"/>
                                   <Component id="txtOwnerLastName" min="-2" pref="180" max="-2" attributes="0"/>
                                   <Component id="txtOwnerFistName" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="txtOwnerID1" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -72,10 +74,15 @@
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTitle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblOwnerID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtOwnerID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtOwnerID1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPhoneNumber" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -135,9 +142,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOwnerFistNameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtOwnerID">
+    <Component class="javax.swing.JTextField" name="txtPhoneNumber">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOwnerIDActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneNumberActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtOwnerLastName">
@@ -313,6 +320,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Phone Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtOwnerID1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOwnerID1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

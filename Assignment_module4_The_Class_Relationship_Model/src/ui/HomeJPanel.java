@@ -30,7 +30,7 @@ public class HomeJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Vehicle Service Management System");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -38,16 +38,16 @@ public class HomeJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(122, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(124, 124, 124))
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(268, 268, 268)
+                .addGap(232, 232, 232)
                 .addComponent(jLabel1)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

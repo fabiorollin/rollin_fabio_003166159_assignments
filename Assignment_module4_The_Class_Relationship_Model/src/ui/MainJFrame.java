@@ -241,25 +241,25 @@ public class MainJFrame extends javax.swing.JFrame {
     business.getServiceCatalog().addService(103, "Tire Rotation", 60.00, "Chris Brown", 40);
 
     // --- 5 Records (with 2 vehicles having same "name/model" for search test case) ---
-    business.getVehicleDirectory().addRecord(1, "John", "Smith", "2026-01-15",
-            1001, "Honda", "Civic", 2019, "ABC123",
-            business.getServiceCatalog().findById(101));
+        business.getVehicleDirectory().addRecord(1, "John", "Smith", 5855551111L, "2026-01-15",
+        1001, "Honda", "Civic", 2019, "ABC123",
+        business.getServiceCatalog().findById(101));
 
-    business.getVehicleDirectory().addRecord(2, "Ana", "Lopez", "2026-01-16",
-            1002, "Honda", "Civic", 2020, "XYZ789",   // same model "Civic" (search test)
-            business.getServiceCatalog().findById(102));
+        business.getVehicleDirectory().addRecord(2, "Ana", "Lopez", 5855552222L, "2026-01-16",
+        1002, "Honda", "Civic", 2020, "XYZ789",
+        business.getServiceCatalog().findById(102));
 
-    business.getVehicleDirectory().addRecord(3, "David", "Miller", "2026-01-17",
-            1003, "Toyota", "Camry", 2018, "CAM456",
-            business.getServiceCatalog().findById(103));
+        business.getVehicleDirectory().addRecord(3, "David", "Miller", 5855553333L, "2026-01-17",
+        1003, "Toyota", "Camry", 2018, "CAM456",
+        business.getServiceCatalog().findById(103));
 
-    business.getVehicleDirectory().addRecord(4, "Maria", "Santos", "2026-01-18",
-            1004, "Ford", "Escape", 2021, "ESC321",
-            business.getServiceCatalog().findById(101));
+        business.getVehicleDirectory().addRecord(4, "Maria", "Santos", 5855554444L, "2026-01-18",
+        1004, "Ford", "Escape", 2021, "ESC321",
+        business.getServiceCatalog().findById(101));
 
-    business.getVehicleDirectory().addRecord(5, "Pedro", "Costa", "2026-01-19",
-            1005, "Toyota", "Corolla", 2017, "COR654",
-            business.getServiceCatalog().findById(102));
+        business.getVehicleDirectory().addRecord(5, "Pedro", "Costa", 5855555555L, "2026-01-19",
+        1005, "Toyota", "Corolla", 2017, "COR654",
+        business.getServiceCatalog().findById(102));
 }
 
 

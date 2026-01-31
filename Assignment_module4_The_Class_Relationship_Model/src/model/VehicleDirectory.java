@@ -17,7 +17,7 @@ public class VehicleDirectory {
 
     // CREATE (used by Register panel and startup data)
     public ServiceRecord addRecord(
-            int ownerId, String firstName, String lastName, String serviceDate,
+            int ownerId, String firstName, String lastName, long phoneNumber, String serviceDate,
             int vehicleId, String make, String model, int year, String registration,
             Service service) {
 
@@ -25,6 +25,7 @@ public class VehicleDirectory {
         owner.setOwnerId(ownerId);
         owner.setFirstName(firstName);
         owner.setLastName(lastName);
+        owner.setPhoneNumber(phoneNumber);
 
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleId(vehicleId);
