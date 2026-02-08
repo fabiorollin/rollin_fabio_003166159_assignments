@@ -29,8 +29,16 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.supplier = supplier;
         
-        
+        setSupplierLogo();
         refreshTable();
+    }
+    
+    private void setSupplierLogo() {
+    if (supplier.getLogoImage() != null) {
+        imgLogo.setIcon(supplier.getLogoImage());
+    } else {
+        imgLogo.setIcon(null);
+    }
     }
 
     public void refreshTable() {
@@ -158,6 +166,16 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        int row = tblProducts.getSelectedRow();
+        if (row < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+        Product p = (Product) tblProducts.getValueAt(row, 0);
+        ViewProductDetailJPanel vp = new ViewProductDetailJPanel(workArea, p);
+        workArea.add("ViewProductDetailJPanel", vp);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
         
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -170,11 +188,29 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        
+        SearchForProductJPanel sfp = new SearchForProductJPanel(workArea, supplier);
+          workArea.add("SearchForProductJPanel", sfp);
+          CardLayout layout = (CardLayout) workArea.getLayout();
+          layout.next(workArea);
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int row = tblProducts.getSelectedRow();
+        if (row < 0) {
+        JOptionPane.showMessageDialog(this, "Please select a product first.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Delete the selected product?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+        return;
+          }
+
+        Product p = (Product) tblProducts.getValueAt(row, 0);
+        supplier.getProductCatalog().removeProduct(p);
+        refreshTable();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables

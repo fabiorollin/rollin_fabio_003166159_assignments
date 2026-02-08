@@ -109,6 +109,15 @@ public class MainJFrame extends javax.swing.JFrame {
         Supplier s3 = supplierDirectory.addSupplier();
         s3.setSupplyName("Amazon");
     }
+    
+    mainWorkArea.removeAll();
+    LoginScreen login = new LoginScreen(mainWorkArea, supplierDirectory);
+    mainWorkArea.add("LoginScreen", login);
+    CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+    layout.show(mainWorkArea, "LoginScreen");
+    mainWorkArea.revalidate();
+    mainWorkArea.repaint();
+    
 
        
 

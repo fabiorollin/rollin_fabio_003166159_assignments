@@ -27,6 +27,9 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
     public SupplierWorkAreaJPanel(JPanel mainWorkArea, Supplier supplier) {
 
         initComponents();
+        btnManageStaff.setEnabled(false);
+        btnSupplierProfile.setEnabled(false);
+        Performance.setEnabled(false);
         this.mainWorkArea = mainWorkArea;
         
         this.supplier = supplier;

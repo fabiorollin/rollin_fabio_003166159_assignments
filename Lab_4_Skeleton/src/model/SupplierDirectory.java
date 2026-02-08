@@ -34,8 +34,10 @@ public class SupplierDirectory {
     }
     
     public Supplier searchSupplier(String keyWord) {
-        for(Supplier s : supplierList) {
-            if(keyWord.equals(s.getSupplyName())) {
+        if (keyWord == null) return null;
+        String k = keyWord.trim();
+        for (Supplier s : supplierList) {
+            if (s.getSupplyName() != null && s.getSupplyName().trim().equalsIgnoreCase(k)) {
                 return s;
             }
         }

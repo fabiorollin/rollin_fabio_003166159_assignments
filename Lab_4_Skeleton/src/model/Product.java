@@ -16,12 +16,15 @@ public class Product {
     private String name;
     private int price;
     private int id;
+    
+    private ArrayList<Feature> featureList;
 
     private static int count = 0;
     
     public Product() {
         count++;
         id = count;
+        featureList = new ArrayList<>();
         
     }
 
@@ -44,6 +47,17 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+    public ArrayList<Feature> getFeatureList() { return featureList; }
+
+    public Feature addFeature(String name, String value) {
+        Feature f = new Feature(name, value);
+        featureList.add(f);
+        return f;
+    }
+
+    public void removeFeature(Feature f) {
+        featureList.remove(f);
     }
 
     
