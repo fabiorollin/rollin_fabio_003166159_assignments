@@ -136,14 +136,36 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        String name = txtName.getText() == null ? "" : txtName.getText().trim();
+    String priceStr = txtPrice.getText() == null ? "" : txtPrice.getText().trim();
+
+    if (name.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Product name is required.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (priceStr.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Product price is required.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    int price;
+    try {
+        price = Integer.parseInt(priceStr);
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Price must be a whole number (integer).", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (price < 0) {
+        JOptionPane.showMessageDialog(this, "Price cannot be negative.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
         Product product = supplier.getProductCatalog().addProduct();
-        product.setName(txtName.getText());
-        String stringPrice = txtPrice.getText();
-        if (stringPrice.isEmpty() == false) {
-            int price = Integer.parseInt(stringPrice);
-            product.setPrice(price);
-        }
-        JOptionPane.showMessageDialog(this, "Product successfully added", "Information", JOptionPane.INFORMATION_MESSAGE);
+        product.setName(name);
+        product.setPrice(price);
+        
+        JOptionPane.showMessageDialog(this, "Product successfully added. ID: " + product.getId(), "Information", JOptionPane.INFORMATION_MESSAGE);
         backAction();
 }//GEN-LAST:event_btnAddActionPerformed
     private void backAction() {
