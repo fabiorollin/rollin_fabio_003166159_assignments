@@ -241,6 +241,8 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
+        logoImage = null;
+    imgLogo.setIcon(null);
         
   
         

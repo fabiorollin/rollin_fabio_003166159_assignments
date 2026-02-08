@@ -28,7 +28,8 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         initComponents();
         this.workArea = workArea;
         this.supplier = supplier;
-       
+        
+        
         refreshTable();
     }
 
