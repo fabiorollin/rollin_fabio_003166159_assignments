@@ -127,6 +127,12 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void cmbSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSuppliersActionPerformed
         // TODO add your handling code here:
+        Object selected = cmbSuppliers.getSelectedItem();
+    if (selected instanceof Supplier) {
+        selectedSupplier = (Supplier) selected;
+    } else {
+        selectedSupplier = null;
+    }
         
         
         
@@ -134,6 +140,30 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        Object roleObj = cmbRoles.getSelectedItem();
+    String role = roleObj == null ? "" : roleObj.toString();
+
+    if ("Administrator".equalsIgnoreCase(role)) {
+        AdminWorkAreaJPanel adminPanel = new AdminWorkAreaJPanel(mainWorkArea, supplierDirectory);
+        mainWorkArea.add("AdminWorkAreaJPanel", adminPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+        return;
+    }
+
+    if ("Supplier".equalsIgnoreCase(role)) {
+        if (selectedSupplier == null) {
+            JOptionPane.showMessageDialog(this, "Please select a supplier.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SupplierWorkAreaJPanel supplierPanel = new SupplierWorkAreaJPanel(mainWorkArea, selectedSupplier);
+        mainWorkArea.add("SupplierWorkAreaJPanel", supplierPanel);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+        return;
+    }
+
+    JOptionPane.showMessageDialog(this, "Please select a role.", "Warning", JOptionPane.WARNING_MESSAGE);
         
         
         
@@ -155,18 +185,53 @@ public class LoginScreen extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateRoleCombo() {
+    cmbRoles.removeAllItems();
+    cmbRoles.addItem("Supplier");
+    cmbRoles.addItem("Administrator");
+    cmbRoles.setSelectedIndex(0);
+    updateSupplierVisibility();
         
       
 
     }
 
     public void populateSupplierCombo() {
+        cmbSuppliers.removeAllItems();
+    for (Supplier s : supplierDirectory.getSupplierList()) {
+        cmbSuppliers.addItem(s);
+    }
+    if (cmbSuppliers.getItemCount() > 0) {
+        cmbSuppliers.setSelectedIndex(0);
+        selectedSupplier = (Supplier) cmbSuppliers.getSelectedItem();
+    } else {
+        selectedSupplier = null;
+    }
        
      
        
     }
 
     private void updateSupplierVisibility() {
+        
+        Object roleObj = cmbRoles.getSelectedItem();
+    String role = roleObj == null ? "" : roleObj.toString();
+
+    boolean supplierMode = "Supplier".equalsIgnoreCase(role);
+
+    cmbSuppliers.setVisible(supplierMode);
+    lblSupplier.setVisible(supplierMode);
+
+    if (supplierMode) {
+        Object selected = cmbSuppliers.getSelectedItem();
+        if (selected instanceof Supplier) {
+            selectedSupplier = (Supplier) selected;
+        }
+    } else {
+        selectedSupplier = null;
+    }
+
+    revalidate();
+    repaint();
         
         
          //To change body of generated methods, choose Tools | Templates.

@@ -185,6 +185,19 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
         // TODO add your handling code here:
+        
+        String name = txtName.getText() == null ? "" : txtName.getText().trim();
+
+    if (name.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Supplier name is required.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (supplierDirectory.searchSupplier(name) != null) {
+        JOptionPane.showMessageDialog(this, "Supplier already exists. Please choose a different name.", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
         Supplier supplier = supplierDirectory.addSupplier();
         supplier.setSupplyName(txtName.getText());
         supplier.setLogoImage(logoImage);
@@ -200,6 +213,28 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void btnAttachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachActionPerformed
         // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+    int result = chooser.showOpenDialog(this);
+    if (result != JFileChooser.APPROVE_OPTION) {
+        return;
+    }
+
+    File file = chooser.getSelectedFile();
+    if (file == null) {
+        return;
+    }
+
+    ImageIcon raw = new ImageIcon(file.getAbsolutePath());
+    Image scaled = raw.getImage().getScaledInstance(
+            imgLogo.getWidth() > 0 ? imgLogo.getWidth() : 150,
+            imgLogo.getHeight() > 0 ? imgLogo.getHeight() : 150,
+            Image.SCALE_SMOOTH
+    );
+
+    logoImage = new ImageIcon(scaled);
+    imgLogo.setIcon(logoImage);
         
         
     }//GEN-LAST:event_btnAttachActionPerformed
