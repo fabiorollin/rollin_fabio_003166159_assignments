@@ -97,6 +97,18 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void setLoginScreen() {
+        
+        // Seed a couple suppliers
+    if (supplierDirectory.getSupplierList().isEmpty()) {
+        Supplier s1 = supplierDirectory.addSupplier();
+        s1.setSupplyName("Best Buy");
+
+        Supplier s2 = supplierDirectory.addSupplier();
+        s2.setSupplyName("Apple");
+
+        Supplier s3 = supplierDirectory.addSupplier();
+        s3.setSupplyName("Amazon");
+    }
 
        
 
