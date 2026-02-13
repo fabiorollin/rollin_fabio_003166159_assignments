@@ -12,6 +12,7 @@ import Business.Profiles.EmployeeDirectory;
 import Business.Profiles.EmployeeProfile;
 import Business.Profiles.StudentDirectory;
 import Business.Profiles.StudentProfile;
+import Business.Profiles.FacultyProfile;
 
 import Business.UserAccounts.UserAccount;
 import Business.UserAccounts.UserAccountDirectory;
@@ -46,6 +47,10 @@ class ConfigureABusiness {
         StudentDirectory studentdirectory = business.getStudentDirectory();
         StudentProfile studentprofile0 = studentdirectory.newStudentProfile(person003);
         
+        studentprofile0.setNUID("001234567");
+        studentdirectory.markNUIDUsed("001234567");
+
+        
 
 
    
@@ -54,6 +59,24 @@ class ConfigureABusiness {
         UserAccount ua3 = uadirectory.newUserAccount(employeeprofile0, "admin", "****"); /// order products for one of the customers and performed by a sales person
         UserAccount ua4 = uadirectory.newUserAccount(studentprofile0, "adam", "****"); /// order products for one of the customers and performed by a sales person
 
+        // Pre-load allowed NUIDs for Module 6 workflow
+        business.getStudentDirectory().addAllowedNUID("001234567");
+        business.getStudentDirectory().addAllowedNUID("009876543");
+        business.getStudentDirectory().addAllowedNUID("004567890");
+
+        // Pre-load faculty profiles + accounts
+        Person f1 = persondirectory.newPerson("Dr Emily Carter");
+        FacultyProfile fp1 = business.getFacultyDirectory().newFacultyProfile(f1);
+        fp1.setFacultyId("FAC1001");
+        fp1.setDepartment("Computer Science");
+        uadirectory.newUserAccount(fp1, "ecarter", "faculty");
+
+        Person f2 = persondirectory.newPerson("Dr Michael Lee");
+        FacultyProfile fp2 = business.getFacultyDirectory().newFacultyProfile(f2);
+        fp2.setFacultyId("FAC1002");
+        fp2.setDepartment("Information Systems");
+        uadirectory.newUserAccount(fp2, "mlee", "faculty");
+        
         return business;
 
     }

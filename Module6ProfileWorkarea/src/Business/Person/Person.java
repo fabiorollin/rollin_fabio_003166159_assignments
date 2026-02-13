@@ -33,4 +33,8 @@ public class Person {
     public String toString() {
         return getPersonId();
     }
+    
+    public void setPersonId(String id) {
+        this.id = id;
+    }
 }

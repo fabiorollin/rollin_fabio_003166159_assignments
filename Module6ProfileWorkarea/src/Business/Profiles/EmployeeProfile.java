@@ -12,6 +12,9 @@ import Business.Person.Person;
  * @author kal bugrara
  */
 public class EmployeeProfile extends Profile {
+    
+    private String employeeId;
+    private String title;
 
 
 
@@ -23,6 +26,22 @@ public class EmployeeProfile extends Profile {
     @Override
     public String getRole(){
         return  "Admin";
+    }
+    
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }
