@@ -31,7 +31,11 @@ public class AdminMyProfileJPanel extends JPanel {
 
         JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton btnBack = new JButton("<< Back");
-        btnBack.addActionListener(e -> ((CardLayout)CardSequencePanel.getLayout()).previous(CardSequencePanel));
+        btnBack.addActionListener(e -> {
+        CardSequencePanel.remove(this);  // remove current panel
+        CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
+        layout.previous(CardSequencePanel);  // go back properly
+        });
         top.add(btnBack);
         add(top, BorderLayout.NORTH);
 
