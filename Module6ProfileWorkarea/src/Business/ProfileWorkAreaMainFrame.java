@@ -57,6 +57,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
         UserNameTextField = new javax.swing.JTextField();
         PasswordTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        SignUpButon = new javax.swing.JButton();
         CardSequencePanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -87,6 +88,13 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+        SignUpButon.setText("Sign up");
+        SignUpButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignUpButonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout actionsidejpanelLayout = new javax.swing.GroupLayout(actionsidejpanel);
         actionsidejpanel.setLayout(actionsidejpanelLayout);
         actionsidejpanelLayout.setHorizontalGroup(
@@ -98,7 +106,10 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
                     .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(PasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(actionsidejpanelLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SignUpButon))))
         );
         actionsidejpanelLayout.setVerticalGroup(
             actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +123,9 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(PasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(actionsidejpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignUpButon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         SplitHomeArea.setLeftComponent(actionsidejpanel);
@@ -185,6 +198,17 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordTextFieldActionPerformed
 
+    private void SignUpButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButonActionPerformed
+        // TODO add your handling code here:
+        UserInterface.SignUp.SignUpJPanel panel =
+            new UserInterface.SignUp.SignUpJPanel(business, CardSequencePanel);
+
+    CardSequencePanel.add("SignUpJPanel_" + System.nanoTime(), panel);
+
+    java.awt.CardLayout layout = (java.awt.CardLayout) CardSequencePanel.getLayout();
+    layout.next(CardSequencePanel);
+    }//GEN-LAST:event_SignUpButonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +257,7 @@ public class ProfileWorkAreaMainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardSequencePanel;
     private javax.swing.JTextField PasswordTextField;
+    private javax.swing.JButton SignUpButon;
     private javax.swing.JSplitPane SplitHomeArea;
     private javax.swing.JTextField UserNameTextField;
     private javax.swing.JPanel actionsidejpanel;
