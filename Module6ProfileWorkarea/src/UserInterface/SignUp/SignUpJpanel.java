@@ -28,7 +28,7 @@ public class SignUpJPanel extends JPanel {
         JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton btnBack = new JButton("<< Back");
         btnBack.addActionListener(e -> {
-        CardSequencePanel.remove(this);  // remove current panel
+        CardSequencePanel.remove(this);  // remove current pane
         CardLayout layout = (CardLayout) CardSequencePanel.getLayout();
         layout.previous(CardSequencePanel);  // go back properly
         });
