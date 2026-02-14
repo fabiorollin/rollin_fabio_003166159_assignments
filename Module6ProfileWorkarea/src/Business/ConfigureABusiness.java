@@ -56,7 +56,7 @@ class ConfigureABusiness {
    
 // Create User accounts that link to specific profiles
         UserAccountDirectory uadirectory = business.getUserAccountDirectory();
-        UserAccount ua3 = uadirectory.newUserAccount(employeeprofile0, "admin", "admin"); /// order products for one of the customers and performed by a sales person
+        UserAccount ua3 = uadirectory.newUserAccount(employeeprofile0, "admin", "****"); /// order products for one of the customers and performed by a sales person
         UserAccount ua4 = uadirectory.newUserAccount(studentprofile0, "adam", "adam"); /// order products for one of the customers and performed by a sales person
 
         
