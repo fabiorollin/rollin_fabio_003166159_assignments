@@ -52,4 +52,12 @@ public class CustomerDirectory {
         }
         return customersreport; 
     } 
+        
+        public ArrayList<CustomerProfile> getCustomers() {
+        return customerlist;
+}
+
+        public int getCustomerCount() {
+        return customerlist.size();
+}
 }

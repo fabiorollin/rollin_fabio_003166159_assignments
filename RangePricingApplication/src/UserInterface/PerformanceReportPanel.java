@@ -4,6 +4,27 @@
  */
 package UserInterface;
 
+import TheBusiness.Business.Business;
+import TheBusiness.CustomerManagement.CustomerDirectory;
+import TheBusiness.CustomerManagement.CustomerProfile;
+import TheBusiness.OrderManagement.MasterOrderList;
+import TheBusiness.OrderManagement.Order;
+import TheBusiness.OrderManagement.OrderItem;
+import TheBusiness.ProductManagement.Product;
+import TheBusiness.Supplier.Supplier;
+import TheBusiness.Supplier.SupplierDirectory;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author fabio
@@ -13,8 +34,170 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
     /**
      * Creates new form PerformanceReportPanel
      */
-    public PerformanceReportPanel() {
+    private Business business;
+    
+    public PerformanceReportPanel(Business business) {
+        this.business = business;
         initComponents();
+        initReportPanel();
+    }
+    
+    public void initReportPanel() {
+        reportComboBox.removeAllItems();
+        reportComboBox.addItem("Report 1: Most Expensive Products");
+        reportComboBox.addItem("Report 2: Most Valuable Customers");
+        reportComboBox.addItem("Report 3: Supplier Report");
+    }
+    
+     public void loadSelectedReport() {
+        int selected = reportComboBox.getSelectedIndex();
+        switch (selected) {
+            case 0: loadReport1(); break;
+            case 1: loadReport2(); break;
+            case 2: loadReport3(); break;
+        }
+     }
+     
+    private void loadReport1() {
+        String[] columns = {"Product Name", "Supplier Name", "Target Price"};
+        List<Object[]> rows = new ArrayList<>();
+
+        SupplierDirectory supplierDir = business.getSupplierDirectory();
+        for (Supplier supplier : supplierDir.getSupplierList()) {
+            for (Product p : supplier.getProductCatalog().getProductList()) {
+                rows.add(new Object[]{
+                    p.toString(),
+                    supplier.getName(),
+                    p.getTargetPrice()
+                });
+            }
+        }
+
+        rows.sort((a, b) -> Integer.compare((int) b[2], (int) a[2]));
+        Object[][] data = rows.toArray(new Object[0][]);
+
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            @Override
+            public Class<?> getColumnClass(int col) {
+                return col == 2 ? Integer.class : String.class;
+            }
+            @Override
+            public boolean isCellEditable(int row, int col) { return false; }
+        };
+
+        reportTable.setModel(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        reportTable.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(2, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+    }
+
+    private void loadReport2() {
+        String[] columns = {"Customer Name", "Total Sales"};
+
+        MasterOrderList mol = business.getMasterOrderList();
+        Map<CustomerProfile, Integer> salesMap = new HashMap<>();
+
+        for (Order order : mol.getOrders()) {
+            CustomerProfile cp = order.getCustomer();
+            salesMap.merge(cp, order.getOrderTotal(), Integer::sum);
+        }
+
+        List<Object[]> rows = new ArrayList<>();
+        for (Map.Entry<CustomerProfile, Integer> entry : salesMap.entrySet()) {
+            rows.add(new Object[]{
+                entry.getKey().toString(),
+                entry.getValue()
+            });
+        }
+
+        rows.sort((a, b) -> Integer.compare((int) b[1], (int) a[1]));
+        Object[][] data = rows.toArray(new Object[0][]);
+
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            @Override
+            public Class<?> getColumnClass(int col) {
+                return col == 1 ? Integer.class : String.class;
+            }
+            @Override
+            public boolean isCellEditable(int row, int col) { return false; }
+        };
+
+        reportTable.setModel(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        reportTable.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+    }
+
+    private void loadReport3() {
+        String[] columns = {"Supplier Name", "Total Sales", "Loyalty Score",
+                            "Avg Spend/Customer", "Top 5 Sales Score"};
+
+        MasterOrderList mol = business.getMasterOrderList();
+        CustomerDirectory customerDir = business.getCustomerDirectory();
+        SupplierDirectory supplierDir = business.getSupplierDirectory();
+        int totalCustomers = customerDir.getCustomers().size();
+
+        List<Object[]> rows = new ArrayList<>();
+
+        for (Supplier supplier : supplierDir.getSupplierList()) {
+            // Collect all products belonging to this supplier
+            Set<Product> supplierProducts = new HashSet<>(
+                supplier.getProductCatalog().getProductList()
+            );
+
+            // Map: customer -> how much they spent on this supplier's products
+            Map<CustomerProfile, Integer> spendByCustomer = new HashMap<>();
+
+            for (Order order : mol.getOrders()) {
+                for (OrderItem item : order.getOrderItems()) {
+                    if (supplierProducts.contains(item.getSelectedProduct())) {
+                        CustomerProfile cp = order.getCustomer();
+                        spendByCustomer.merge(cp, item.getOrderItemTotal(), Integer::sum);
+                    }
+                }
+            }
+
+            int totalSales = spendByCustomer.values().stream()
+                                .mapToInt(Integer::intValue).sum();
+            int uniqueCustomers = spendByCustomer.size();
+
+            double loyaltyScore = totalCustomers > 0
+                    ? (double) uniqueCustomers / totalCustomers : 0;
+
+            double avgSpend = uniqueCustomers > 0
+                    ? (double) totalSales / uniqueCustomers : 0;
+
+            // Top 5 customers by spend
+            List<Integer> spends = new ArrayList<>(spendByCustomer.values());
+            spends.sort((a, b) -> Integer.compare(b, a));
+            int top5Sum = 0;
+            for (int i = 0; i < Math.min(5, spends.size()); i++) {
+                top5Sum += spends.get(i);
+            }
+            double top5Score = totalSales > 0 ? (double) top5Sum / totalSales : 0;
+
+            rows.add(new Object[]{
+                supplier.getName(),
+                totalSales,
+                String.format("%.4f", loyaltyScore),
+                String.format("%.2f", avgSpend),
+                String.format("%.4f", top5Score)
+            });
+        }
+
+        Object[][] data = rows.toArray(new Object[0][]);
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            @Override
+            public boolean isCellEditable(int row, int col) { return false; }
+        };
+
+        reportTable.setModel(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        reportTable.setRowSorter(sorter);
     }
 
     /**
@@ -26,19 +209,55 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        reportComboBox = new javax.swing.JComboBox<>();
+        reportScrollPane = new javax.swing.JScrollPane();
+        reportTable = new javax.swing.JTable();
+        loadReportButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        reportComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(reportComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        reportTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        reportScrollPane.setViewportView(reportTable);
+
+        add(reportScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 580, 310));
+
+        loadReportButton.setText("Load Report");
+        loadReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadReportButtonActionPerformed(evt);
+            }
+        });
+        add(loadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+
+        jButton1.setText("<< Back");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadReportButtonActionPerformed
+        // TODO add your handling code here:
+        loadSelectedReport();
+    }//GEN-LAST:event_loadReportButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton loadReportButton;
+    private javax.swing.JComboBox<String> reportComboBox;
+    private javax.swing.JScrollPane reportScrollPane;
+    private javax.swing.JTable reportTable;
     // End of variables declaration//GEN-END:variables
 }
