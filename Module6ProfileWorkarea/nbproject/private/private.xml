@@ -9,6 +9,7 @@
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/StudentRole/StudentWorkAreaJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/AdminRole/MyProfileWorkResp/AdminMyProfileJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/UserAccounts/UserAccountDirectory.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/SignUp/SignUpJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/UserAccounts/UserAccount.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/FacultyRole/FacultyWorkAreaJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/AdminRole/AdministerUserAccountsWorkResp/ManageUserAccountsJPanel.java</file>
@@ -19,10 +20,10 @@
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/ConfigureABusiness.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/AdminRole/AdminRoleWorkAreaJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/Business.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/SignUp/SignUpJpanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/Person/PersonDirectory.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/AdminRole/AdministerUserAccountsWorkResp/AdminUserAccount.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/UserInterface/WorkAreas/AdminRole/ManageFacultyWorkResp/ManageFacultyJPanel.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/Module6ProfileWorkarea/src/Business/Profiles/FacultyProfile.java</file>
         </group>
     </open-files>
 </project-private>
