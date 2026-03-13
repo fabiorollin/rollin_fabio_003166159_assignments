@@ -32,6 +32,9 @@ public class PricingMainFrame extends javax.swing.JFrame {
     public PricingMainFrame() {
         initComponents();
         business = ConfigureABusiness.initialize();
+        
+        setSize(1200, 1200);
+        setLocationRelativeTo(null); 
 
     }
 

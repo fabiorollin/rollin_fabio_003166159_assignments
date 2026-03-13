@@ -225,7 +225,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         UserInterface.PerformanceReportPanel reportPanel = 
-        new UserInterface.PerformanceReportPanel(business);
+        new UserInterface.PerformanceReportPanel(business, CardSequencePanel);
 
          CardSequencePanel.removeAll();
          CardSequencePanel.add("PerformanceReports", reportPanel);

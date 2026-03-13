@@ -35,9 +35,11 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
      * Creates new form PerformanceReportPanel
      */
     private Business business;
+    private javax.swing.JPanel CardSequencePanel;
     
-    public PerformanceReportPanel(Business business) {
+    public PerformanceReportPanel(Business business,javax.swing.JPanel cardPanel) {
         this.business = business;
+        this.CardSequencePanel = cardPanel;
         initComponents();
         initReportPanel();
     }
@@ -220,6 +222,9 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
         reportComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(reportComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
+        reportScrollPane.setFocusable(false);
+        reportScrollPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         reportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -233,7 +238,7 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
         ));
         reportScrollPane.setViewportView(reportTable);
 
-        add(reportScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 580, 310));
+        add(reportScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 830, 650));
 
         loadReportButton.setText("Load Report");
         loadReportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -241,16 +246,27 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
                 loadReportButtonActionPerformed(evt);
             }
         });
-        add(loadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        add(loadReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 800, -1, -1));
 
         jButton1.setText("<< Back");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 800, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void loadReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadReportButtonActionPerformed
         // TODO add your handling code here:
         loadSelectedReport();
     }//GEN-LAST:event_loadReportButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         ((java.awt.CardLayout) CardSequencePanel.getLayout()).previous(CardSequencePanel);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
