@@ -143,15 +143,15 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
         SupplierDirectory supplierDir = business.getSupplierDirectory();
         int totalCustomers = customerDir.getCustomers().size();
 
-        List<Object[]> rows = new ArrayList<>();
+        // Build the SupplierReport using SupplierSummary objects
+        TheBusiness.Supplier.SupplierReport supplierReport = 
+            new TheBusiness.Supplier.SupplierReport();
 
         for (Supplier supplier : supplierDir.getSupplierList()) {
-            // Collect all products belonging to this supplier
             Set<Product> supplierProducts = new HashSet<>(
                 supplier.getProductCatalog().getProductList()
             );
 
-            // Map: customer -> how much they spent on this supplier's products
             Map<CustomerProfile, Integer> spendByCustomer = new HashMap<>();
 
             for (Order order : mol.getOrders()) {
@@ -169,11 +169,9 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
 
             double loyaltyScore = totalCustomers > 0
                     ? (double) uniqueCustomers / totalCustomers : 0;
-
             double avgSpend = uniqueCustomers > 0
                     ? (double) totalSales / uniqueCustomers : 0;
 
-            // Top 5 customers by spend
             List<Integer> spends = new ArrayList<>(spendByCustomer.values());
             spends.sort((a, b) -> Integer.compare(b, a));
             int top5Sum = 0;
@@ -182,12 +180,23 @@ public class PerformanceReportPanel extends javax.swing.JPanel {
             }
             double top5Score = totalSales > 0 ? (double) top5Sum / totalSales : 0;
 
+            // Create a SupplierSummary and add it to the SupplierReport
+            TheBusiness.Supplier.SupplierSummary summary =
+                new TheBusiness.Supplier.SupplierSummary(
+                    supplier.getName(), totalSales, loyaltyScore, avgSpend, top5Score
+                );
+            supplierReport.addSummary(summary);
+        }
+
+        // Build the table rows from the SupplierReport
+        List<Object[]> rows = new ArrayList<>();
+        for (TheBusiness.Supplier.SupplierSummary s : supplierReport.getSummaries()) {
             rows.add(new Object[]{
-                supplier.getName(),
-                totalSales,
-                String.format("%.4f", loyaltyScore),
-                String.format("%.2f", avgSpend),
-                String.format("%.4f", top5Score)
+                s.getSupplierName(),
+                s.getTotalSales(),
+                String.format("%.4f", s.getLoyaltyScore()),
+                String.format("%.2f", s.getAvgSpendPerCustomer()),
+                String.format("%.4f", s.getTop5SalesScore())
             });
         }
 

@@ -214,22 +214,21 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
 
-        CardSequencePanel.removeAll();
-        //      ViewBusinessUnitRiskProfile drpd= new ViewBusinessUnitRiskProfile(businessunit, CardSequencePanel);
-//        ManageHazards drpd = new ManageHazards(businessunit, CardSequencePanel);
-//        CardSequencePanel.add("ManageRiskProfiles", drpd);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        javax.swing.JOptionPane.showMessageDialog(this, 
+        "Review Commission feature coming soon!", 
+        "Not Implemented", 
+        javax.swing.JOptionPane.INFORMATION_MESSAGE);
 }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
 
-        UserInterface.PerformanceReportPanel reportPanel = 
+       UserInterface.PerformanceReportPanel reportPanel =
         new UserInterface.PerformanceReportPanel(business, CardSequencePanel);
 
-         CardSequencePanel.removeAll();
-         CardSequencePanel.add("PerformanceReports", reportPanel);
-         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    CardSequencePanel.add("PerformanceReports", reportPanel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).show(CardSequencePanel, "PerformanceReports");
+
 }//GEN-LAST:event_jButton11ActionPerformed
 
 

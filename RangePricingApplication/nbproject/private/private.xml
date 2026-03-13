@@ -4,26 +4,28 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/OrderManagement/ProcessOrder.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/SalesPersonWorkAreaJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/ManageTheBusiness/ManageBusinessDetail1.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/RangePricingApplication.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/OrderManagement/ManageSalesPersonOrders.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/ProductManagement/ManageProductPerformanceDetail.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/ProductManagement/ProductCatalog.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/PricingMainFrame.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/ManageTheBusiness/ManageTheBusinessJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Supplier/SupplierDirectory.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Business/Business.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/MarketingManagerWorkAreaJPanel1.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/ConfigureABusiness.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/CustomerManagement/CustomerDirectory.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/OrderManagement/OrderItem.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/BusinessManagerWorkAreaJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/OrderManagement/MasterOrderList.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/ProductManagement/ManageSuppliersJPanel.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/PerformanceReportPanel.java</file>
-            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/ProductManagement/Product.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Supplier/Supplier.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Supplier/SupplierReport.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/SalesPersonWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/OrderManagement/ManageSalesPersonOrders.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/PricingMainFrame.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/ManageTheBusiness/ManageTheBusinessJPanel.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Business/Business.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/MarketingManagerWorkAreaJPanel1.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/ConfigureABusiness.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/BusinessManagerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/Supplier/SupplierSummary.java</file>
+            <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/ProductManagement/Product.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/UserInterface/Main/WorkSpaceProfiles/OrderManagement/ManageProductPerformanceDetail1.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/ConfigureABusiness.java</file>
             <file>file:/C:/Users/fabio/Dropbox/Docs/Estacio/Northeastern/5100/Coursework/FirstRepository/RangePricingApplication/src/TheBusiness/OrderManagement/Order.java</file>
